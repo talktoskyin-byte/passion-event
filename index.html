@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passion Events — Creating Experiences, Celebrating Passion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon-deep:#241443;
+    --maroon:#7b1fa2;
+    --marigold:#e8b923;
+    --marigold-bright:#f5cf55;
+    --rani-pink:#9c27b0;
+    --peacock-teal:#0f9b8e;
+    --cream:#f5f0fb;
+    --ivory:#ffffff;
+    --ink:#170f28;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- pattern backgrounds ---------- */
+  .diya-row{
+    height:10px;
+    background-image:repeating-linear-gradient(45deg, var(--marigold) 0 6px, transparent 6px 12px);
+    opacity:.55;
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(23,15,40,.95);
+    backdrop-filter:blur(6px);
+  }
+  nav.wrap{
+    position:relative;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    color:var(--cream);
+    font-family:'Fraunces',serif;
+    font-size:1.3rem;
+    font-weight:600;
+  }
+  .logo-img{height:38px;width:auto;object-fit:contain;}
+  .brand span{color:var(--marigold-bright);}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{
+    color:var(--cream);
+    font-size:.92rem;
+    font-weight:500;
+    opacity:.85;
+    transition:opacity .2s;
+  }
+  .nav-links a:hover{opacity:1;color:var(--marigold-bright);}
+  .nav-cta{
+    background:var(--marigold);
+    color:var(--maroon-deep);
+    padding:9px 18px;
+    border-radius:2px;
+    font-weight:700;
+    font-size:.88rem;
+  }
+  .menu-btn{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;line-height:1;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse at 15% 15%, rgba(232,185,35,.22), transparent 55%),
+      radial-gradient(ellipse at 90% 85%, rgba(15,155,142,.28), transparent 55%),
+      linear-gradient(160deg, var(--maroon), var(--maroon-deep) 75%);
+    color:var(--cream);
+    padding:100px 24px 120px;
+    text-align:left;
+  }
+  .hero-inner{max-width:1120px;margin:0 auto;position:relative;}
+  .hero-eyebrow-mark{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.85rem;color:var(--marigold-bright);
+    margin-bottom:26px;
+    font-weight:600;
+  }
+  .hero-eyebrow-mark::before{
+    content:"";width:30px;height:2px;background:var(--marigold-bright);display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    color:var(--ivory);
+    max-width:14ch;
+    line-height:1.03;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--marigold-bright);
+  }
+  .hero p{
+    margin-top:26px;
+    max-width:46ch;
+    font-size:1.15rem;
+    color:rgba(255,250,240,.82);
+  }
+  .hero-actions{
+    margin-top:40px;
+    display:flex;gap:16px;flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--marigold);
+    color:var(--maroon-deep);
+    padding:15px 30px;
+    font-weight:700;
+    border-radius:2px;
+    display:inline-block;
+    transition:transform .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    border:1.5px solid rgba(255,250,240,.4);
+    color:var(--cream);
+    padding:15px 30px;
+    border-radius:2px;
+    display:inline-block;
+  }
+  .hero-stats{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    padding-top:34px;
+    border-top:1px solid rgba(255,250,240,.18);
+  }
+  .hero-stats div .num{
+    font-family:'Fraunces',serif;
+    font-size:2.1rem;
+    color:var(--marigold-bright);
+  }
+  .hero-stats div .lbl{
+    font-size:.85rem;
+    color:rgba(255,250,240,.7);
+    margin-top:4px;
+  }
+
+  /* ---------- section basics ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-tag{
+    color:var(--rani-pink);
+    font-weight:700;
+    font-size:.85rem;
+    margin-bottom:14px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem,3.6vw,2.6rem);
+    color:var(--maroon-deep);
+    line-height:1.15;
+  }
+  .section-head p{
+    margin-top:18px;
+    color:#4a4459;
+    font-size:1.05rem;
+    max-width:56ch;
+  }
+
+  /* ---------- about ---------- */
+  .about{background:var(--ivory);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .about-copy p{color:#4a4459;margin-bottom:16px;font-size:1.02rem;}
+  .about-quote{
+    background:var(--cream);
+    border-left:4px solid var(--marigold);
+    padding:28px 30px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--maroon);
+  }
+
+  /* ---------- what we do ---------- */
+  .services{background:var(--ivory);color:var(--ink);}
+  .services .section-tag{color:var(--rani-pink);}
+  .services .section-head h2{color:var(--maroon-deep);}
+  .services .section-head p{color:#4a4459;}
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:#e6dff2;
+    border:1px solid #e6dff2;
+  }
+  .service-card{
+    background:var(--ivory);
+    padding:36px 30px;
+  }
+  .service-card .emoji{font-size:1.8rem;margin-bottom:18px;display:block;}
+  .service-card h3{
+    color:var(--maroon-deep);
+    font-size:1.2rem;
+    margin-bottom:12px;
+  }
+  .service-card ul{
+    list-style:none;
+    color:#4a4459;
+    font-size:.94rem;
+  }
+  .service-card ul li{
+    padding:5px 0;
+    border-top:1px solid #ece6f7;
+  }
+  .service-card ul li:first-child{border-top:none;}
+
+  /* ---------- journey ---------- */
+  .journey{background:var(--ivory);}
+  .journey-list{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+    counter-reset:step;
+  }
+  .journey-step{
+    position:relative;
+    padding:0 20px 0 0;
+    border-right:1px solid #e6dff2;
+  }
+  .journey-step:last-child{border-right:none;padding-right:0;}
+  .journey-step .step-num{
+    font-family:'Fraunces',serif;
+    font-size:2.4rem;
+    color:var(--marigold);
+    margin-bottom:14px;
+  }
+  .journey-step h3{font-size:1.02rem;color:var(--maroon-deep);margin-bottom:8px;}
+  .journey-step p{font-size:.9rem;color:#5c5570;}
+
+  /* ---------- past events gallery ---------- */
+  .events{background:var(--cream);}
+  .event-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .event-card{
+    background:var(--ivory);
+    border:1px solid #e6dff2;
+    overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .event-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px -14px rgba(36,20,67,.35);}
+  .event-photo{
+    aspect-ratio:4/3;
+    width:100%;
+    background:linear-gradient(135deg,var(--maroon-deep) 0%, var(--maroon) 55%, var(--marigold) 100%);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .event-photo img{
+    width:100%;height:100%;object-fit:cover;
+    position:absolute;inset:0;
+  }
+  .event-photo .fallback{
+    color:rgba(255,250,240,.85);
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:.95rem;
+    text-align:center;
+    padding:0 20px;
+    z-index:1;
+  }
+  .event-body{padding:20px 22px 24px;}
+  .event-year{
+    font-size:.78rem;
+    color:var(--rani-pink);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .event-body h3{
+    font-size:1.08rem;
+    color:var(--maroon-deep);
+    line-height:1.3;
+  }
+
+  /* ---------- why choose ---------- */
+  .why{background:var(--ivory);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:28px;
+  }
+  .why-card .emoji{font-size:1.7rem;margin-bottom:14px;display:block;}
+  .why-card h3{font-size:1rem;color:var(--maroon-deep);margin-bottom:8px;}
+  .why-card p{font-size:.88rem;color:#5c5570;}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(15,155,142,.28), transparent 55%),
+      linear-gradient(160deg, var(--maroon), var(--maroon-deep));
+    color:var(--ivory);
+    text-align:center;
+    padding:110px 24px;
+  }
+  .cta h2{
+    font-size:clamp(2rem,4.4vw,3rem);
+    max-width:16ch;
+    margin:0 auto 20px;
+  }
+  .cta p{color:rgba(255,250,240,.78);max-width:52ch;margin:0 auto 40px;font-size:1.08rem;}
+  .cta-actions{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .btn-ghost{display:inline-flex;align-items:center;gap:8px;}
+  .ig-icon{flex-shrink:0;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:rgba(255,250,240,.7);padding:56px 0 28px;}
+  .footer-grid{
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;
+    padding-bottom:40px;border-bottom:1px solid rgba(255,250,240,.1);
+  }
+  .footer-brand{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--ivory);margin-bottom:14px;}
+  .footer-brand span{color:var(--marigold-bright);}
+  footer h4{color:var(--ivory);font-size:.9rem;margin-bottom:16px;letter-spacing:.02em;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:10px;font-size:.92rem;}
+  footer ul li a:hover{color:var(--marigold-bright);}
+  .footer-bottom{
+    padding-top:24px;display:flex;justify-content:space-between;
+    font-size:.82rem;color:rgba(255,250,240,.45);flex-wrap:wrap;gap:10px;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .nav-links{
+      display:none;
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:0;
+      background:rgba(23,15,40,.98);
+      padding:8px 24px 20px;
+      border-top:1px solid rgba(255,250,240,.1);
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:12px 0;border-bottom:1px solid rgba(255,250,240,.08);}
+    .menu-btn{display:block;}
+    .about-grid{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr;}
+    .journey-list{grid-template-columns:repeat(2,1fr);row-gap:36px;}
+    .journey-step{border-right:none;}
+    .event-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr;gap:28px;}
+    .hero-stats{grid-template-columns:repeat(2,1fr);row-gap:24px;}
+  }
+  @media (max-width:520px){
+    .event-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .journey-list{grid-template-columns:1fr;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+
+  :focus-visible{outline:2px solid var(--marigold-bright);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="brand">
+      <img src="images/logo.png" alt="Passion Events logo" class="logo-img" onerror="this.style.display='none'">
+      Passion <span>Events</span>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">What We Do</a>
+      <a href="#events">Past Events</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+    <button class="menu-btn" aria-label="Toggle menu" onclick="document.getElementById('nav-links').classList.toggle('open')">&#9776;</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow-mark">Event &amp; Experiential Company · Est. 2023</div>
+    <h1>Creating experiences, <em>celebrating</em> passion.</h1>
+    <p>We design and run competitions, festive celebrations and cultural events for kids, women, families, brands and communities — from first idea to the last photograph.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Plan your event</a>
+      <a href="#events" class="btn-ghost">See our events</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="num">10+</div><div class="lbl">Events organized</div></div>
+      <div><div class="num">4</div><div class="lbl">Contest seasons run</div></div>
+      <div><div class="num">2023</div><div class="lbl">Founded</div></div>
+      <div><div class="num">6+</div><div class="lbl">Event categories</div></div>
+    </div>
+  </div>
+</section>
+<div class="diya-row"></div>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-tag">About Us</div>
+      <h2>An event is more than a gathering.</h2>
+    </div>
+    <div class="about-copy">
+      <p>At Passion Events, we believe an event is an opportunity to create emotions, connections and unforgettable memories. We conceptualize and organize with attention to creativity, presentation, audience engagement and smooth execution.</p>
+      <p>Our experience spans entertainment, cultural activities, competitions, celebrations, brand promotions and community-oriented events — for every age group.</p>
+      <div class="about-quote">"Our aim is simple — to turn every occasion into an experience worth remembering."</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">What We Do</div>
+      <h2>Festive events, built around your audience.</h2>
+      <p>From kids' competitions to ladies' celebrations, cultural festivals and brand promotions — planned and executed under one roof.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="emoji">👧</span>
+        <h3>Kids Events &amp; Competitions</h3>
+        <ul>
+          <li>Fancy Dress Competitions</li>
+          <li>Drawing &amp; Art Competitions</li>
+          <li>Dance &amp; Singing Events</li>
+          <li>Festival-Themed Activities</li>
+          <li>Fashion Show</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="emoji">👩</span>
+        <h3>Ladies Events</h3>
+        <ul>
+          <li>Kitty &amp; Ladies Parties</li>
+          <li>Teej &amp; Festival Celebrations</li>
+          <li>Ramp Walks</li>
+          <li>Games &amp; Entertainment</li>
+          <li>Women Talent Events</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="emoji">🇮🇳</span>
+        <h3>Cultural &amp; Traditional Events</h3>
+        <ul>
+          <li>Indian traditions, brought to life</li>
+          <li>Community celebrations</li>
+          <li>Cultural values in modern form</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="emoji">🏆</span>
+        <h3>Competitions &amp; Talent Shows</h3>
+        <ul>
+          <li>Registration &amp; promotion</li>
+          <li>Judging &amp; certificates</li>
+          <li>Trophies &amp; prize distribution</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="emoji">📣</span>
+        <h3>Brand &amp; Promotional Solutions</h3>
+        <ul>
+          <li>Brand activations</li>
+          <li>Product promotion &amp; sampling</li>
+          <li>Social media promotion</li>
+          <li>Event sponsorship</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="emoji">🌏</span>
+        <h3>Indian Culture Abroad</h3>
+        <ul>
+          <li>Cultural experiences for families</li>
+          <li>Bringing traditions to audiences living away from India</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journey">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">How We Work</div>
+      <h2>Our event journey</h2>
+    </div>
+    <div class="journey-list">
+      <div class="journey-step">
+        <div class="step-num">01</div>
+        <h3>Concept</h3>
+        <p>We understand your requirement and develop the event concept.</p>
+      </div>
+      <div class="journey-step">
+        <div class="step-num">02</div>
+        <h3>Planning</h3>
+        <p>Venue, activities, décor, participants, sponsors and logistics.</p>
+      </div>
+      <div class="journey-step">
+        <div class="step-num">03</div>
+        <h3>Promotion</h3>
+        <p>Strategies that attract the right audience.</p>
+      </div>
+      <div class="journey-step">
+        <div class="step-num">04</div>
+        <h3>Execution</h3>
+        <p>Our team manages the event on-ground, start to finish.</p>
+      </div>
+      <div class="journey-step">
+        <div class="step-num">05</div>
+        <h3>Memories</h3>
+        <p>Awards, photographs and social media moments that last.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="events" id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Our Portfolio</div>
+      <h2>Past events</h2>
+      <p>A look back at the celebrations, competitions and cultural moments we've brought to life.</p>
+    </div>
+    <div class="event-grid" id="event-grid"></div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Why Choose Us</div>
+      <h2>Why Passion Events</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="emoji">✨</span>
+        <h3>Creative Concepts</h3>
+        <p>Unique themes and experiences, not just an organized event.</p>
+      </div>
+      <div class="why-card">
+        <span class="emoji">🎯</span>
+        <h3>Audience-Focused</h3>
+        <p>Designed around who's attending — kids, women, families, corporates or brands.</p>
+      </div>
+      <div class="why-card">
+        <span class="emoji">🤝</span>
+        <h3>Complete Support</h3>
+        <p>Planning, promotion, execution and post-event coordination, end to end.</p>
+      </div>
+      <div class="why-card">
+        <span class="emoji">🇮🇳</span>
+        <h3>Indian at Heart</h3>
+        <p>Traditional values, presented with modern event production.</p>
+      </div>
+      <div class="why-card">
+        <span class="emoji">📸</span>
+        <h3>Memorable Experiences</h3>
+        <p>Moments people enjoy, remember and share.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Let's create something special.</h2>
+    <p>Have an event idea? Want to organize a competition? Looking for a creative celebration or a way to promote your brand? Let's turn your idea into an experience.</p>
+    <div class="cta-actions">
+      <a href="tel:+917357961694" class="btn-primary">Call 73579 61694</a>
+      <a href="https://instagram.com/passioneventsofficial" class="btn-ghost">
+        <svg class="ig-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @passioneventsofficial
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Passion <span>Events</span></div>
+        <p style="max-width:34ch;font-size:.92rem;">Creating Experiences. Celebrating Passion. Building Memories.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">What We Do</a></li>
+          <li><a href="#events">Past Events</a></li>
+          <li><a href="#why">Why Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+917357961694">73579 61694</a></li>
+          <li>
+            <a href="https://instagram.com/passioneventsofficial" style="display:inline-flex;align-items:center;gap:8px;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              @passioneventsofficial
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/s_passionevents" style="display:inline-flex;align-items:center;gap:8px;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              @s_passionevents
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Passion Events. All rights reserved.</span>
+      <span>Founded 2023</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Past events — image src points to /images/events/<file>.
+  // Drop a matching photo into that folder (jpg or png) and it will appear automatically.
+  // If no photo is found yet, a styled placeholder shows instead.
+  const events = [
+    { file: "teej-meet-2023",              year: "2023", name: "Teej Meet 2023" },
+    { file: "janmashtami-season-01",       year: "2023", name: "Janmashtami Contest — Season 01" },
+    { file: "janmashtami-season-02-2024",  year: "2024", name: "Janmashtami Contest — Season 02" },
+    { file: "karwa-chauth-couple-2024",    year: "2024", name: "Karwa Chauth Couple Event" },
+    { file: "gangour-event-2025",          year: "2025", name: "Gangour Event" },
+    { file: "stars-of-rajasthan-2025",     year: "2025", name: "Stars of Rajasthan — Singing &amp; Dancing Competition" },
+    { file: "janmashtami-season-03",       year: "2025", name: "National Janmashtami Contest — Season 03" },
+    { file: "karwa-chauth-couple-season-02", year: "2025", name: "Karwa Chauth Couple Event — Season 02" },
+    { file: "rajasthan-ki-shaan-2026",     year: "2026", name: "Rajasthan ki Shaan — Singing, Dancing &amp; Fashion Show" },
+    { file: "janmashtami-season-04",       year: "2026", name: "National Janmashtami Contest — Season 04" },
+  ];
+
+  const grid = document.getElementById("event-grid");
+  events.forEach(ev => {
+    const card = document.createElement("div");
+    card.className = "event-card";
+    card.innerHTML = `
+      <div class="event-photo">
+        <span class="fallback">${ev.name}</span>
+        <img src="images/events/${ev.file}.jpg"
+             alt="${ev.name}"
+             onerror="this.onerror=null;this.src='images/events/${ev.file}.png';this.onerror=function(){this.style.display='none';}">
+      </div>
+      <div class="event-body">
+        <div class="event-year">${ev.year}</div>
+        <h3>${ev.name}</h3>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
